@@ -1,167 +1,84 @@
+ <form class="mt-6" (ngSubmit)="formSubmit()">
+      <!-- Email   -->
+      <input
+        type="email"
+        placeholder="E-mail"
+        class="w-full bg-white border-none p-4 rounded-2xl mt-4 shadow-[#cff0ff_0px_10px_10px_-5px] placeholder-gray-400 focus:outline-none focus:border-2 focus:border-[#12b1d1] transition"
+        [(ngModel)]="loginData.email"
+        name="email"
+        
+        required
+      />
 
-<div class="max-w-7xl mx-auto mt-16 bg-white rounded-3xl shadow-2xl overflow-hidden">
+      <!-- Password   with toggle -->
+      <div class="relative w-full">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          placeholder="Password"
+          class="w-full bg-white border-none p-4 rounded-2xl mt-4 shadow-[#cff0ff_0px_10px_10px_-5px] placeholder-gray-400 pr-12 focus:outline-none focus:border-2 focus:border-[#12b1d1] transition"
+          [(ngModel)]="loginData.password"
+          name="password"
+          required
+        />
+        <button
+          type="button"
+          class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+          (click)="showPassword = !showPassword"
+        >
+          <!-- Eye icons (unchanged) -->
+          <svg
+            *ngIf="!showPassword"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+            />
+          </svg>
+          <svg
+            *ngIf="showPassword"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M3 3l3.59 3.59"
+            />
+          </svg>
+        </button>
+      </div>
 
-    <div class="grid lg:grid-cols-2">
-
-        <!-- LEFT LOGIN SECTION -->
-        <div class="flex flex-col justify-between p-8 lg:p-16">
-
-            <!-- Login Form -->
-            <div class="max-w-md mx-auto w-full">
-
-                <h1 class="text-5xl font-bold text-center mb-3">
-                    Welcome Back
-                </h1>
-
-                <p class="text-gray-500 text-center mb-10">
-                    Sign in to access your banking account securely.
-                </p>
-
-                <form>
-
-                    <!-- Email -->
-                    <div class="mb-5">
-                        <label class="block text-sm font-medium mb-2">
-                            Email
-                        </label>
-
-                        <input
-                            type="email"
-                            placeholder="john@example.com"
-                            class="w-full h-12 px-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                        >
-                    </div>
-
-                    <!-- Password -->
-                    <div class="mb-5">
-                        <label class="block text-sm font-medium mb-2">
-                            Password
-                        </label>
-
-                        <input
-                            type="password"
-                            placeholder="Enter password"
-                            class="w-full h-12 px-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                        >
-                    </div>
-
-                    <!-- Buttons -->
-                    <div class="flex gap-4 mb-6">
-
-                        <button
-                            type="submit"
-                            class="flex-1 h-12 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition"
-                        >
-                            Login
-                        </button>
-
-                        <button
-                            type="reset"
-                            class="flex-1 h-12 rounded-xl bg-gray-900 text-white font-semibold hover:bg-black transition"
-                        >
-                            Clear
-                        </button>
-
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- RIGHT BANKING DASHBOARD -->
-        <div class="bg-gradient-to-br from-indigo-700 via-indigo-600 to-blue-600 relative overflow-hidden hidden lg:block">
-
-            <!-- Decorative Shapes -->
-            <div class="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-white/5"></div>
-            <div class="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-white/5"></div>
-
-            <div class="relative z-10 p-8 text-white">
-
-                <h2 class="text-5xl font-bold leading-tight mb-5">
-                    Manage Your Finances
-                    <br>
-                    Anytime, Anywhere
-                </h2>
-
-                <p class="text-white/80 text-lg mb-10 max-w-xl">
-                    Securely access your accounts, transfer funds,
-                    pay bills, and monitor transactions from one place.
-                </p>
-
-                <!-- Banking Dashboard -->
-                <div class="relative">
-
-                    <!-- Cards -->
-                    <div class="grid grid-cols-3 gap-4">
-
-                        <div class="col-span-2 bg-white rounded-2xl p-5 shadow-xl text-gray-900">
-                            <p class="text-gray-500 text-sm">
-                                Available Balance
-                            </p>
-
-                            <h3 class="text-3xl font-bold mt-2">
-                                ₹8,45,620
-                            </h3>
-
-                            <p class="text-green-600 text-sm mt-2">
-                                +4.8% this month
-                            </p>
-                        </div>
-
-                        <div class="bg-white rounded-2xl p-5 shadow-xl text-gray-900">
-                            <p class="text-gray-500 text-sm">
-                                Savings
-                            </p>
-
-                            <h3 class="text-2xl font-bold mt-2">
-                                ₹2.1L
-                            </h3>
-                        </div>
-
-                        <div class="bg-white rounded-2xl p-5 shadow-xl text-gray-900">
-                            <p class="text-gray-500 text-sm">
-                                Income
-                            </p>
-
-                            <h3 class="text-2xl font-bold mt-2">
-                                ₹1.25L
-                            </h3>
-
-                            <p class="text-green-600 text-sm mt-2">
-                                +12%
-                            </p>
-                        </div>
-
-                        <div class="bg-white rounded-2xl p-5 shadow-xl text-gray-900">
-                            <p class="text-gray-500 text-sm">
-                                Expenses
-                            </p>
-
-                            <h3 class="text-2xl font-bold mt-2">
-                                ₹48.2K
-                            </h3>
-
-                            <p class="text-red-500 text-sm mt-2">
-                                -8%
-                            </p>
-                        </div>
-
-                        <div class="bg-white rounded-2xl p-5 shadow-xl text-gray-900">
-                            <p class="text-gray-500 text-sm">
-                                Investments
-                            </p>
-
-                            <h3 class="text-2xl font-bold mt-2">
-                                ₹3.75L
-                            </h3>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
+      <!-- Buttons row -->
+      <div class="flex gap-4 mt-6">
+        <button
+          type="submit"
+          class="flex-1 font-bold bg-gradient-to-r from-[#1089d3] to-[#12b1d1] text-white py-4 rounded-2xl shadow-[rgba(133,189,215,0.88)_0px_20px_10px_-15px] border-none transition-all duration-200 hover:scale-105 hover:shadow-[rgba(133,189,215,0.88)_0px_23px_10px_-20px] active:scale-95 active:shadow-[rgba(133,189,215,0.88)_0px_15px_10px_-10px]"
+        >
+          Sign In
+        </button>
+        <button
+          type="button"
+          (click)="clearForm()"
+          class="flex-1 font-bold bg-gradient-to-r from-gray-500 to-gray-600 text-white py-4 rounded-2xl shadow-[rgba(133,189,215,0.88)_0px_20px_10px_-15px] border-none transition-all duration-200 hover:scale-105 hover:shadow-[rgba(133,189,215,0.88)_0px_23px_10px_-20px] active:scale-95 active:shadow-[rgba(133,189,215,0.88)_0px_15px_10px_-10px]"
+        >
+          Clear
+        </button>
+      </div>
+    </form>
