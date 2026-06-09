@@ -9,61 +9,96 @@
             <!-- Login Form -->
             <div class="max-w-md mx-auto w-full">
 
-                <h1 class="text-5xl font-bold text-center mb-3">
-                    Welcome Back
-                </h1>
+                <h1 class="text-5xl font-bold text-center mb-3"> Welcome Back </h1> <p class="text-gray-500 text-center mb-10"> Sign in to access your banking account securely. </p>
 
-                <p class="text-gray-500 text-center mb-10">
-                    Sign in to access your banking account securely.
-                </p>
+ <form class="mt-6" (ngSubmit)="formSubmit()">
+    
+      <!-- Email   -->
+       <label class="block text-sm font-medium mb-2"> Email </label>
+      <input
+        type="email"
+        placeholder="Email"
+        class="w-full h-12 px-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+        [(ngModel)]="loginData.email"
+        name="email"
+        
+        required
+      />
 
-                <form>
+      <!-- Password   with toggle -->
+       <label class="block text-sm font-medium mb-2"> Password </label>
+      <div class="relative w-full">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          placeholder="Password"
+          class="w-full h-12 px-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+          [(ngModel)]="loginData.password"
+          name="password"
+          required
+        />
+        <button
+          type="button"
+          class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+          (click)="showPassword = !showPassword"
+        >
+          <!-- Eye icons (unchanged) -->
+          <svg
+            *ngIf="!showPassword"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+            />
+          </svg>
+          <svg
+            *ngIf="showPassword"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M3 3l3.59 3.59"
+            />
+          </svg>
+        </button>
+      </div>
 
-                    <!-- Email -->
-                    <div class="mb-5">
-                        <label class="block text-sm font-medium mb-2">
-                            Email
-                        </label>
+      <!-- Buttons row -->
+      <div class="flex gap-4 mt-6">
+        <button
+          type="submit"
+          class="flex-1 font-bold bg-gradient-to-br from-indigo-700 via-indigo-600 to-blue-600 text-white py-4 rounded-2xl shadow-[rgba(133,189,215,0.88)_0px_20px_10px_-15px] border-none transition-all duration-200 hover:scale-105 hover:shadow-[rgba(133,189,215,0.88)_0px_23px_10px_-20px] active:scale-95 active:shadow-[rgba(133,189,215,0.88)_0px_15px_10px_-10px]"
+        >
+          Sign In
+        </button>
+        <button
+          type="button"
+          (click)="clearForm()"
+          class="flex-1 font-bold bg-gradient-to-r from-gray-500 to-gray-600 text-white py-4 rounded-2xl shadow-[rgba(133,189,215,0.88)_0px_20px_10px_-15px] border-none transition-all duration-200 hover:scale-105 hover:shadow-[rgba(133,189,215,0.88)_0px_23px_10px_-20px] active:scale-95 active:shadow-[rgba(133,189,215,0.88)_0px_15px_10px_-10px]"
+        >
+          Clear
+        </button>
+      </div>
+    </form>
 
-                        <input
-                            type="email"
-                            placeholder="john@example.com"
-                            class="w-full h-12 px-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                        >
-                    </div>
-
-                    <!-- Password -->
-                    <div class="mb-5">
-                        <label class="block text-sm font-medium mb-2">
-                            Password
-                        </label>
-
-                        <input
-                            type="password"
-                            placeholder="Enter password"
-                            class="w-full h-12 px-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                        >
-                    </div>
-
-                    <!-- Buttons -->
-                    <div class="flex gap-4 mb-6">
-
-                        <button
-                            type="submit"
-                            class="flex-1 h-12 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition"
-                        >
-                            Login
-                        </button>
-
-                        <button
-                            type="reset"
-                            class="flex-1 h-12 rounded-xl bg-gray-900 text-white font-semibold hover:bg-black transition"
-                        >
-                            Clear
-                        </button>
-
-                    </div>
-                </form>
             </div>
         </div>
 
@@ -98,9 +133,10 @@
                                 Available Balance
                             </p>
 
-                            <h3 class="text-3xl font-bold mt-2">
-                                ₹8,45,620
+                            <h3 class="text-3xl font-bold mt-2 counter" data-target="125000">
+                                {{stats[0].value.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}}
                             </h3>
+                            
 
                             <p class="text-green-600 text-sm mt-2">
                                 +4.8% this month
@@ -111,10 +147,14 @@
                             <p class="text-gray-500 text-sm">
                                 Savings
                             </p>
+                            
 
-                            <h3 class="text-2xl font-bold mt-2">
-                                ₹2.1L
+                            <h3 class="text-2xl font-bold mt-2 counter" data-target="210000">
+                                {{stats[1].value.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}}
                             </h3>
+                            <p class="text-green-600 text-sm mt-2">
+                                +1.9%
+                            </p>
                         </div>
 
                         <div class="bg-white rounded-2xl p-5 shadow-xl text-gray-900">
@@ -122,8 +162,8 @@
                                 Income
                             </p>
 
-                            <h3 class="text-2xl font-bold mt-2">
-                                ₹1.25L
+                            <h3 class="text-2xl font-bold mt-2 counter" data-target="125000">
+                                {{stats[2].value.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}}
                             </h3>
 
                             <p class="text-green-600 text-sm mt-2">
@@ -136,8 +176,8 @@
                                 Expenses
                             </p>
 
-                            <h3 class="text-2xl font-bold mt-2">
-                                ₹48.2K
+                            <h3 class="text-2xl font-bold mt-2 counter" data-target="48200">
+                                {{stats[3].value.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}}
                             </h3>
 
                             <p class="text-red-500 text-sm mt-2">
@@ -149,10 +189,14 @@
                             <p class="text-gray-500 text-sm">
                                 Investments
                             </p>
+                            
 
-                            <h3 class="text-2xl font-bold mt-2">
-                                ₹3.75L
+                            <h3 class="text-2xl font-bold mt-2 counter" data-target="375000">
+                                {{stats[4].value.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}}
                             </h3>
+                            <p class="text-green-600 text-sm mt-2">
+                                +3.4%
+                            </p>
                         </div>
 
                     </div>
@@ -165,3 +209,42 @@
     </div>
 
 </div>
+
+
+
+
+
+
+
+
+/ts function
+
+stats = [
+  { title: 'Balance', value: 0, target: 845620},
+  { title: 'Savings', value: 0, target: 210000 },
+  { title: 'Income', value: 0, target: 125000 },
+  { title: 'Expenses', value: 0, target: 48200 },
+  { title: 'Investments', value: 0, target: 375000 }
+];
+
+ngOnInit() {
+  this.stats.forEach(stat => {
+    this.animate(stat);
+  });
+}
+
+animate(stat: any) {
+
+  const increment = stat.target / 100;
+
+  const timer = setInterval(() => {
+
+    stat.value += increment;
+
+    if (stat.value >= stat.target) {
+      stat.value = stat.target;
+      clearInterval(timer);
+    }
+
+  }, 20);
+}
