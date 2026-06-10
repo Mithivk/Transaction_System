@@ -1,5 +1,4 @@
-
-<div class="max-w-7xl mx-auto mt-16 bg-white rounded-3xl shadow-2xl overflow-hidden">
+ <div class="max-w-7xl mx-auto mt-24 bg-white rounded-3xl shadow-2xl overflow-hidden">
 
     <div class="grid lg:grid-cols-2">
 
@@ -103,7 +102,7 @@
         </div>
 
         <!-- RIGHT BANKING DASHBOARD -->
-        <div class="bg-gradient-to-br from-indigo-700 via-indigo-600 to-blue-600 relative overflow-hidden hidden lg:block">
+        <div class="bg-gradient-to-br from-indigo-700 via-indigo-600 to-blue-600 relative overflow-hidden hidden lg:block rounded-lg">
 
             <!-- Decorative Shapes -->
             <div class="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-white/5"></div>
@@ -209,4 +208,3 @@
     </div>
 
 </div>
-
